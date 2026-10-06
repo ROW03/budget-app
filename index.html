@@ -59,11 +59,16 @@
     body {
       background-color: var(--bg);
       color: var(--text-main);
-      padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 80px) 16px;
+      padding-top: calc(env(safe-area-inset-top, 16px) + 12px);
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: calc(100px + env(safe-area-inset-bottom, 24px));
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .app-container {
@@ -132,7 +137,7 @@
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-around;
-      padding: 8px 12px calc(env(safe-area-inset-bottom, 12px) + 4px) 12px;
+      padding: 8px 12px calc(env(safe-area-inset-bottom, 12px) + 6px) 12px;
       z-index: 999;
       box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
     }
@@ -148,7 +153,7 @@
       font-size: 0.72rem;
       font-weight: 700;
       cursor: pointer;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 12px;
       transition: all 0.15s;
     }
@@ -275,11 +280,11 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 18px;
+      padding: 16px 18px;
       box-shadow: var(--shadow-md);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .type-switcher {
@@ -293,7 +298,7 @@
     }
 
     .type-btn {
-      padding: 10px;
+      padding: 9px;
       border: none;
       background: transparent;
       border-radius: var(--radius-sm);
@@ -323,7 +328,7 @@
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .input-label {
@@ -341,7 +346,7 @@
     .currency-symbol {
       position: absolute;
       left: 14px;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--text-muted);
       pointer-events: none;
@@ -349,9 +354,9 @@
 
     .amount-input {
       width: 100%;
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       font-weight: 800;
-      padding: 12px 14px 12px 38px;
+      padding: 11px 14px 11px 36px;
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
       background: var(--bg);
@@ -370,7 +375,7 @@
     .text-input {
       width: 100%;
       font-size: 0.95rem;
-      padding: 12px 14px;
+      padding: 11px 14px;
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
       background: var(--bg);
@@ -385,16 +390,10 @@
       box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
     .date-input {
       width: 100%;
-      font-size: 0.9rem;
-      padding: 10px 12px;
+      font-size: 0.92rem;
+      padding: 10px 14px;
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
       background: var(--bg);
@@ -402,37 +401,16 @@
       outline: none;
     }
 
-    .quick-categories {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .cat-pill {
-      font-size: 0.76rem;
-      font-weight: 600;
-      padding: 5px 10px;
-      border-radius: 20px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    .cat-pill.active {
-      background: var(--primary);
-      color: #ffffff;
+    .date-input:focus {
       border-color: var(--primary);
     }
 
     .submit-btn {
       background: var(--primary);
       color: #ffffff;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
-      padding: 14px;
+      padding: 13px;
       border-radius: var(--radius-md);
       border: none;
       cursor: pointer;
@@ -442,7 +420,7 @@
       gap: 8px;
       box-shadow: var(--shadow-lg);
       transition: all 0.2s;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     .submit-btn:active {
@@ -512,7 +490,7 @@
     }
 
     .tab-pill {
-      padding: 5px 10px;
+      padding: 5px 11px;
       font-size: 0.74rem;
       font-weight: 700;
       color: var(--text-muted);
@@ -541,18 +519,28 @@
       display: grid;
     }
 
+    .transactions-section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
     .spending-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 30px;
     }
 
     .spend-item {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 13px 15px;
+      padding: 14px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -561,47 +549,30 @@
     }
 
     .spend-item.income-item {
-      border-left: 4px solid var(--income);
+      border-left: 4.5px solid var(--income);
     }
 
     .spend-item.expense-item {
-      border-left: 4px solid var(--expense);
+      border-left: 4.5px solid var(--expense);
     }
 
     .item-left {
       display: flex;
       flex-direction: column;
       gap: 4px;
-      max-width: 65%;
+      max-width: 68%;
     }
 
     .item-purpose {
-      font-size: 0.94rem;
+      font-size: 0.96rem;
       font-weight: 700;
       color: var(--text-main);
       word-break: break-word;
     }
 
     .item-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
-    }
-
-    .item-tag {
-      background: var(--primary-light);
-      color: var(--primary);
-      padding: 2px 7px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.66rem;
-    }
-
-    .item-tag.inc-tag {
-      background: var(--income-light);
-      color: var(--income);
     }
 
     .item-right {
@@ -611,7 +582,7 @@
     }
 
     .item-amount {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       font-variant-numeric: tabular-nums;
     }
@@ -629,7 +600,7 @@
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      padding: 6px;
+      padding: 8px;
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -638,6 +609,7 @@
 
     .delete-btn:hover {
       color: var(--expense);
+      background: var(--expense-light);
     }
 
     .empty-state {
@@ -670,38 +642,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .category-bars {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cat-bar-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .cat-bar-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .cat-bar-bg {
-      height: 9px;
-      background: var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .cat-bar-fill {
-      height: 100%;
-      border-radius: 6px;
-      background: var(--primary);
     }
 
     .month-metric-grid {
@@ -1044,6 +984,7 @@
         </div>
       </div>
 
+      <!-- Add Entry Form (Streamlined) -->
       <div class="form-card">
         <div class="type-switcher">
           <button type="button" class="type-btn active expense" id="typeExpenseBtn" onclick="setEntryType('expense')">
@@ -1074,7 +1015,7 @@
             </div>
           </div>
 
-          <div class="input-group" style="margin-top: 10px;">
+          <div class="input-group">
             <label class="input-label" for="entryPurpose" id="purposeLabel">What is this purchase for?</label>
             <input 
               type="text" 
@@ -1084,18 +1025,11 @@
               required
               autocomplete="off"
             >
-            <div class="quick-categories" id="quickPillsContainer"></div>
           </div>
 
-          <div class="form-row" style="margin-top: 10px;">
-            <div class="input-group">
-              <label class="input-label" for="entryDate">Date</label>
-              <input type="date" id="entryDate" class="date-input" required>
-            </div>
-            <div class="input-group">
-              <label class="input-label" for="entryCategory">Category Tag</label>
-              <input type="text" id="entryCategory" class="text-input" style="padding: 10px 12px; font-size: 0.9rem;" placeholder="General">
-            </div>
+          <div class="input-group">
+            <label class="input-label" for="entryDate">Date</label>
+            <input type="date" id="entryDate" class="date-input" required>
           </div>
 
           <button type="submit" class="submit-btn" id="submitEntryBtn">
@@ -1107,6 +1041,7 @@
         </form>
       </div>
 
+      <!-- Quick Search & Date Range Toolbar -->
       <div class="filter-toolbar">
         <div class="search-wrapper">
           <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1117,18 +1052,18 @@
             type="text" 
             id="searchInput" 
             class="search-input" 
-            placeholder="Quick search purchases or income..." 
+            placeholder="Search purchases or income..." 
             oninput="handleSearch(this.value)"
           >
         </div>
 
         <div class="preset-row">
           <div class="tab-pills">
-            <button class="tab-pill active" onclick="setPresetFilter('today', this)">Today</button>
+            <button class="tab-pill active" onclick="setPresetFilter('all', this)">All</button>
+            <button class="tab-pill" onclick="setPresetFilter('today', this)">Today</button>
             <button class="tab-pill" onclick="setPresetFilter('week', this)">Week</button>
             <button class="tab-pill" onclick="setPresetFilter('month', this)">Month</button>
-            <button class="tab-pill" onclick="setPresetFilter('all', this)">All</button>
-            <button class="tab-pill" onclick="toggleCustomRange(this)">Custom Range</button>
+            <button class="tab-pill" onclick="toggleCustomRange(this)">Custom</button>
           </div>
           <select id="typeFilterSelect" onchange="renderList()" style="font-size: 0.74rem; font-weight: 700; padding: 5px 8px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); outline: none;">
             <option value="all">All Flow</option>
@@ -1149,23 +1084,15 @@
         </div>
       </div>
 
+      <div class="transactions-section-title">
+        <span>History</span>
+        <span id="transactionCountBadge" style="font-size: 0.72rem; font-weight: 600;">0 entries</span>
+      </div>
       <div class="spending-list" id="transactionsList"></div>
     </div>
 
     <!-- VIEW 2: ANALYTICS -->
     <div id="viewAnalytics" class="view-section">
-      <div class="analytics-card">
-        <div class="analytics-title">
-          <span>Category Breakdown</span>
-          <select id="breakdownScopeSelect" onchange="renderAnalytics()" style="font-size: 0.76rem; font-weight: 700; padding: 4px 8px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text-main);">
-            <option value="month">This Month</option>
-            <option value="week">This Week</option>
-            <option value="all">All Time</option>
-          </select>
-        </div>
-        <div class="category-bars" id="categoryBarsContainer"></div>
-      </div>
-
       <div class="analytics-card">
         <div class="analytics-title">
           <span>Monthly Trends</span>
@@ -1193,6 +1120,22 @@
 
         <div style="font-size: 0.76rem; font-weight: 700; color: var(--text-muted); margin-top: 6px;">Daily Spending This Month (Days 1–31)</div>
         <div class="trend-bars-container" id="monthlySparkBars"></div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="analytics-title">
+          <span>Weekly Summary</span>
+        </div>
+        <div class="month-metric-grid">
+          <div class="metric-box">
+            <span class="metric-title">This Week Spend</span>
+            <span class="metric-val" id="analyticsWeekSpend" style="color: var(--expense);">$0.00</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-title">This Week Income</span>
+            <span class="metric-val" id="analyticsWeekIncome" style="color: var(--income);">+$0.00</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1255,7 +1198,7 @@
             <span style="font-size: 0.7rem; color: var(--text-muted);" id="rateTimestampLabel">Auto-syncs online</span>
           </div>
           <div style="font-size: 0.72rem; color: var(--text-muted);">The app automatically fetches live market exchange rates whenever your phone is connected to the internet. If you exchanged cash at a specific bank or airport rate, you can manually override them:</div>
-          <div class="form-row">
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
             <div class="input-group">
               <label class="input-label" style="font-size: 0.7rem;">1 USD = CNY</label>
               <input type="number" step="0.0001" id="customCnyRate" class="text-input" style="padding: 8px 10px; font-size: 0.85rem;" value="6.7046" onchange="updateCustomRates()">
@@ -1277,7 +1220,6 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation -->
   <nav class="nav-bar">
     <button class="nav-btn active" id="navTrackerBtn" onclick="switchNav('tracker')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1307,7 +1249,6 @@
     </button>
   </nav>
 
-  <!-- Settings Modal -->
   <div class="modal-overlay" id="settingsModal" onclick="if(event.target === this) closeSettings();">
     <div class="modal-content">
       <div class="modal-title">
@@ -1348,20 +1289,16 @@
 
     let transactions = [];
     let currentEntryType = 'expense';
-    let currentPreset = 'today';
+    let currentPreset = 'all';
     let searchQuery = '';
     let customStartDate = null;
     let customEndDate = null;
     let dailyBudget = 0;
     let lastRateUpdate = null;
 
-    const expensePills = ['Food 🍕', 'Groceries 🛒', 'Coffee ☕', 'Transport 🚗', 'Bills ⚡', 'Shopping 🛍️'];
-    const incomePills = ['Salary 💼', 'Freelance 💻', 'Gift 🎁', 'Refund 🔄', 'Investment 📈', 'Other 💵'];
-
     window.addEventListener('DOMContentLoaded', () => {
       loadStoredData();
       setDefaultDate();
-      renderQuickPills();
       renderTotals();
       renderList();
       recalculateCurrency();
@@ -1401,7 +1338,6 @@
               type: 'expense',
               amount: 14.50,
               purpose: 'Chipotle Burrito Bowl',
-              category: 'Food 🍕',
               date: todayStr,
               timestamp: Date.now() - 3600000 * 2
             },
@@ -1410,18 +1346,8 @@
               type: 'expense',
               amount: 4.75,
               purpose: 'Iced Oat Latte',
-              category: 'Coffee ☕',
               date: todayStr,
               timestamp: Date.now() - 3600000 * 5
-            },
-            {
-              id: 'init_3',
-              type: 'income',
-              amount: 150.00,
-              purpose: 'Freelance Graphic Design Gig',
-              category: 'Freelance 💻',
-              date: todayStr,
-              timestamp: Date.now() - 3600000 * 8
             }
           ];
           saveTransactions();
@@ -1500,7 +1426,7 @@
           <span>Record Money In</span>
         `;
         purposeLabel.textContent = 'Where did this money come from?';
-        purposeInput.placeholder = 'e.g. Paycheck, Freelance design, Gift from family, Sold old phone';
+        purposeInput.placeholder = 'e.g. Paycheck, Freelance, Gift';
       } else {
         incBtn.classList.remove('active');
         expBtn.classList.add('active');
@@ -1510,34 +1436,7 @@
           <span>Record Expense</span>
         `;
         purposeLabel.textContent = 'What is this purchase for?';
-        purposeInput.placeholder = 'e.g. Lunch with team, Groceries, Gas, Coffee';
-      }
-
-      renderQuickPills();
-    }
-
-    function renderQuickPills() {
-      const container = document.getElementById('quickPillsContainer');
-      const pills = (currentEntryType === 'income') ? incomePills : expensePills;
-      container.innerHTML = pills.map(p => `
-        <span class="cat-pill" onclick="selectQuickTag(this, '${p}')">${p}</span>
-      `).join('');
-    }
-
-    function selectQuickTag(el, tag) {
-      const currentCatInput = document.getElementById('entryCategory');
-      const purposeInput = document.getElementById('entryPurpose');
-
-      document.querySelectorAll('.cat-pill').forEach(pill => pill.classList.remove('active'));
-      
-      if (currentCatInput.value === tag) {
-        currentCatInput.value = '';
-      } else {
-        el.classList.add('active');
-        currentCatInput.value = tag;
-        if (!purposeInput.value) {
-          purposeInput.focus();
-        }
+        purposeInput.placeholder = 'e.g. Lunch with team, Groceries, Gas';
       }
     }
 
@@ -1545,12 +1444,10 @@
       const amountInput = document.getElementById('entryAmount');
       const purposeInput = document.getElementById('entryPurpose');
       const dateInput = document.getElementById('entryDate');
-      const categoryInput = document.getElementById('entryCategory');
 
       const amount = parseFloat(amountInput.value);
       const purpose = purposeInput.value.trim();
       const date = dateInput.value;
-      const category = categoryInput.value.trim() || (currentEntryType === 'income' ? 'Income' : 'General');
 
       if (isNaN(amount) || amount <= 0) {
         alert('Please enter a valid amount.');
@@ -1569,7 +1466,6 @@
         type: currentEntryType,
         amount: Math.round(amount * 100) / 100,
         purpose: purpose,
-        category: category,
         date: date,
         timestamp: Date.now()
       };
@@ -1579,8 +1475,6 @@
 
       amountInput.value = '';
       purposeInput.value = '';
-      categoryInput.value = '';
-      document.querySelectorAll('.cat-pill').forEach(pill => pill.classList.remove('active'));
 
       renderTotals();
       renderList();
@@ -1693,6 +1587,7 @@
 
     function renderList() {
       const container = document.getElementById('transactionsList');
+      const countBadge = document.getElementById('transactionCountBadge');
       const todayStr = getLocalIsoDate(new Date());
       const weekBounds = getWeekRange(new Date());
       const monthBounds = getMonthRange(new Date());
@@ -1704,9 +1599,8 @@
 
         if (searchQuery) {
           const matchPurpose = (t.purpose || '').toLowerCase().includes(searchQuery);
-          const matchCategory = (t.category || '').toLowerCase().includes(searchQuery);
           const matchAmount = (t.amount.toString()).includes(searchQuery);
-          if (!matchPurpose && !matchCategory && !matchAmount) return false;
+          if (!matchPurpose && !matchAmount) return false;
         }
 
         const parts = t.date.split('-');
@@ -1729,16 +1623,18 @@
         return true;
       });
 
+      countBadge.textContent = `${filtered.length} ${filtered.length === 1 ? 'entry' : 'entries'}`;
+
       if (filtered.length === 0) {
         container.innerHTML = `
           <div class="empty-state">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="8" x2="12" y2="12"></line>
               <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
-            <div style="font-weight: 700; font-size: 0.95rem;">No matching entries found</div>
-            <div style="font-size: 0.8rem;">Try clearing your search or switching filter tabs.</div>
+            <div style="font-weight: 700; font-size: 0.95rem;">No entries found</div>
+            <div style="font-size: 0.8rem;">Change the filter tabs or clear your search to see past purchases.</div>
           </div>
         `;
         return;
@@ -1751,7 +1647,7 @@
         let displayDate = item.date;
         if (dateParts.length === 3) {
           const dObj = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
-          displayDate = dObj.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+          displayDate = dObj.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
         }
 
         return `
@@ -1759,9 +1655,7 @@
             <div class="item-left">
               <div class="item-purpose">${escapeHtml(item.purpose)}</div>
               <div class="item-meta">
-                <span class="item-tag ${isInc ? 'inc-tag' : ''}">${escapeHtml(item.category || (isInc ? 'Income' : 'General'))}</span>
-                <span>•</span>
-                <span>${displayDate} ${timeFormatted ? 'at ' + timeFormatted : ''}</span>
+                <span>${displayDate} ${timeFormatted ? '• ' + timeFormatted : ''}</span>
               </div>
             </div>
             <div class="item-right">
@@ -1779,57 +1673,8 @@
     }
 
     function renderAnalytics() {
-      const scope = document.getElementById('breakdownScopeSelect').value;
       const weekBounds = getWeekRange(new Date());
       const monthBounds = getMonthRange(new Date());
-
-      const expenses = transactions.filter(t => {
-        if (t.type === 'income') return false;
-        const parts = t.date.split('-');
-        let tDate = new Date();
-        if (parts.length === 3) {
-          tDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), 12, 0, 0);
-        }
-
-        if (scope === 'week') {
-          return tDate >= weekBounds.start && tDate <= weekBounds.end;
-        } else if (scope === 'month') {
-          return tDate >= monthBounds.start && tDate <= monthBounds.end;
-        }
-        return true;
-      });
-
-      const catTotals = {};
-      let totalSpent = 0;
-      expenses.forEach(e => {
-        const cat = e.category || 'General';
-        catTotals[cat] = (catTotals[cat] || 0) + e.amount;
-        totalSpent += e.amount;
-      });
-
-      const catBarsContainer = document.getElementById('categoryBarsContainer');
-      const sortedCats = Object.entries(catTotals).sort((a,b) => b[1] - a[1]);
-
-      if (sortedCats.length === 0) {
-        catBarsContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); text-align: center; padding: 16px;">No expenses recorded for this timeframe.</div>';
-      } else {
-        const colors = ['#4f46e5', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#06b6d4', '#64748b'];
-        catBarsContainer.innerHTML = sortedCats.map(([cat, amt], idx) => {
-          const pct = Math.round((amt / totalSpent) * 100);
-          const color = colors[idx % colors.length];
-          return `
-            <div class="cat-bar-item">
-              <div class="cat-bar-header">
-                <span>${escapeHtml(cat)}</span>
-                <span>$${amt.toFixed(2)} (${pct}%)</span>
-              </div>
-              <div class="cat-bar-bg">
-                <div class="cat-bar-fill" style="width: ${pct}%; background: ${color};"></div>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
 
       const monthExpenses = transactions.filter(t => {
         if (t.type === 'income') return false;
@@ -1851,8 +1696,30 @@
         return false;
       });
 
+      const weekExpenses = transactions.filter(t => {
+        if (t.type === 'income') return false;
+        const parts = t.date.split('-');
+        if (parts.length === 3) {
+          const tDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), 12, 0, 0);
+          return tDate >= weekBounds.start && tDate <= weekBounds.end;
+        }
+        return false;
+      });
+
+      const weekIncomes = transactions.filter(t => {
+        if (t.type !== 'income') return false;
+        const parts = t.date.split('-');
+        if (parts.length === 3) {
+          const tDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), 12, 0, 0);
+          return tDate >= weekBounds.start && tDate <= weekBounds.end;
+        }
+        return false;
+      });
+
       let mSpent = monthExpenses.reduce((sum, item) => sum + item.amount, 0);
       let mInc = monthIncomes.reduce((sum, item) => sum + item.amount, 0);
+      let wSpent = weekExpenses.reduce((sum, item) => sum + item.amount, 0);
+      let wInc = weekIncomes.reduce((sum, item) => sum + item.amount, 0);
 
       const today = new Date();
       const currentDayOfMonth = today.getDate();
@@ -1879,6 +1746,9 @@
       document.getElementById('metricMonthIncome').textContent = `+$${mInc.toFixed(2)}`;
       document.getElementById('metricDailyAvg').textContent = `$${dailyAvg.toFixed(2)}`;
       document.getElementById('metricHighestDay').textContent = `$${maxDaySpend.toFixed(2)}`;
+
+      document.getElementById('analyticsWeekSpend').textContent = `$${wSpent.toFixed(2)}`;
+      document.getElementById('analyticsWeekIncome').textContent = `+$${wInc.toFixed(2)}`;
 
       const sparkContainer = document.getElementById('monthlySparkBars');
       let barsHtml = '';
@@ -2103,11 +1973,10 @@
         return;
       }
 
-      let csv = 'ID,Type,Date,Amount,Purpose,Category,Timestamp\n';
+      let csv = 'ID,Type,Date,Amount,Purpose,Timestamp\n';
       transactions.forEach(t => {
         const cleanPurpose = `"${(t.purpose || '').replace(/"/g, '""')}"`;
-        const cleanCat = `"${(t.category || '').replace(/"/g, '""')}"`;
-        csv += `${t.id},${t.type || 'expense'},${t.date},${t.amount.toFixed(2)},${cleanPurpose},${cleanCat},${t.timestamp || ''}\n`;
+        csv += `${t.id},${t.type || 'expense'},${t.date},${t.amount.toFixed(2)},${cleanPurpose},${t.timestamp || ''}\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
